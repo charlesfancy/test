@@ -56,6 +56,7 @@ echo "Connection Successfully" . '<br />';
 <p align="center">
     <a href="insert_1.php">加入會員</a>
     <a href="user_list.php">會員清單</a>
+    <a href="user_edit.php">會員修改</a>
 
 </body>
 

@@ -24,11 +24,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql="SELECT * FORM user Where account ='$account' AND password = '$password'";
+$sql="SELECT * FORM users Where account ='$account' AND password = '$password'";
 $result = $conn->query($sql);
 // $result = execute_sql("test",$sql,$conn);
 
-if ($result == 0)
+if ($result->num_rows == 0)
 {
     // mysql_free_result($result);
 

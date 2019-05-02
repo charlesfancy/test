@@ -4,9 +4,9 @@
     <script>
     function check_date()
     {
-    if(document.myForm.account.value.lengthh == 0)
+    if(document.myForm.['account'].value.lengthh == 0)
         alert("帳號欄位不可空白！");
-    elseif(document.myForm.password.value.length == 0)
+    elseif(document.myForm.['password'].value.length == 0)
         alert("密碼欄位不可空白！");
     else
         myForm.submit();
@@ -21,7 +21,15 @@ $servername = "mysql";
 $username = "root";
 $password = "root";
 $db = 'test';
-
+function check_date()
+    {
+    if(document.myForm.account.value.lengthh == 0)
+        alert("帳號欄位不可空白！");
+    elseif(document.myForm.password.value.length == 0)
+        alert("密碼欄位不可空白！");
+    else
+        myForm.submit();
+    }
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 // Check connection

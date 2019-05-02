@@ -32,6 +32,15 @@ if ($result->num_rows > 0) {
         echo 'Email: ' . $row['email'] . '<br />';
         echo 'Comment: ' . $row['comment'] . '<br /><br />';
 
+        $account = $row['account'];
+        $name = $row['name'];
+        $year = $row['year'];
+        $month = $row['month'];
+        $day = $row['day'];
+        $phone = $row['phone'];
+        $email = $row['email'];
+
+
     }
 }
 ?>
@@ -43,7 +52,7 @@ if ($result->num_rows > 0) {
     </head>
     <body>
         
-    <form action="insert.php" method="post" name="myForm">
+    <form action="update.php" method="post" name="myForm">
         <table border="2" align="cenert" bordercolor="">
             <tr>
                 <td colspan="2" bgcolor="" align="cenet"
@@ -52,7 +61,7 @@ if ($result->num_rows > 0) {
             </tr>
             <tr bgcolor="">
                 <td align="right">＊使用者帳號：</td>
-                <td><input name="account" type="text" size="15" value="">(請使用英文或數字)</td>
+                <td><?php echo htmlspecialchars($account);?></td>
             </tr>
             <tr bgcolor="">
                 <td align="right">＊使用者密碼：</td>
@@ -60,11 +69,11 @@ if ($result->num_rows > 0) {
             </tr>
             <tr bgcolor="">
                 <td align="right">＊密碼確認：</td>
-                <td><input name="re_password" type="password" size="15">(請使用英文或數字)</td>
+                <td><input name="re_password" type="password" size="15"/>(請使用英文或數字)</td>
             </tr>
             <tr bgcolor="">
                 <td align="right">＊姓名：</td>
-                <td><input name="name" type="text" size="8"></td>
+                <td><input name="name" type="text" size="8" value="<?php echo htmlspecialchars($name);?>" /></td>
             </tr>
             <tr bgcolor="">
                 <td align="right">＊性別：</td>
@@ -76,18 +85,18 @@ if ($result->num_rows > 0) {
             <tr bgcolor="">
                 <td align="right">＊生日：</td>
                 <td>民國
-                <input name="year" type="TEXT"size="4">年
-                <input name="month" type="TEXT"size="2">月
-                <input name="day" type="TEXT"size="2">日
+                <input name="year" type="TEXT"size="6" value="<?php echo htmlspecialchars($year);?>" />年
+                <input name="month" type="TEXT"size="4" value="<?php echo htmlspecialchars($month);?>" />月
+                <input name="day" type="TEXT"size="4" value="<?php echo htmlspecialchars($day);?>" />日
                 </td>
             </tr>
             <tr bgcolor="">
                 <td align="right">電話：</td>
-                <td><input name="phone" type="text" size="20"></td>
+                <td><input name="phone" type="text" size="20" value="<?php echo htmlspecialchars($phone);?>" /></td>
             </tr>
             <tr bgcolor="">
                 <td align="right">Email：</td>
-                <td><input name="email" type="text" size="40"></td>
+                <td><input name="email" type="text" size="40" value="<?php echo htmlspecialchars($email);?>" /></td>
             </tr>
             <tr bgcolor="">
                 <td align="right">備註：</td>

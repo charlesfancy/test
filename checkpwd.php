@@ -35,14 +35,19 @@ echo "帳號: " . $account . "密碼: " . $password1 . "<br>";
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Phone" . $row["phone"]. "<br>";
+        echo "登入成功!!<br>";
+        echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Phone: " . $row["phone"]. "<br>";
 
         setcookie("id",$row["id"],time()+3600);
         setcookie("account",$row["account"],time()+3600);
         setcookie("passed","TURE",time()+3600);
     
+        $now_id = $_COOKIE["id"];
+
+       
     }}else{
         echo "帳號密碼錯誤，請查明後在登入!";
+        header("refresh:5;url=http://test.test/index.php");
     }
 
 // if($result = 0)
@@ -60,5 +65,13 @@ if ($result->num_rows > 0) {
 //     setcookie("passed","TURE");
     
 // }
-header("refresh:5;url=http://test.test/user_main.php");
+// header("refresh:5;url=http://test.test/user_main.php");
 ?>
+<html>
+    <head>
+    </head>
+    <body>
+    <a href="user_main2.php">會員資訊</a>
+        
+    </body>
+</html>

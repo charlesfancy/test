@@ -1,9 +1,11 @@
-<?
+<?php
 ini_set('display_errors', 1);
 $servername = "mysql";
 $username = "root";
 $password = "root";
-$db = "test";
+$db = 'test';
+
+$now_id = $_COOKIE["id"];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
@@ -13,10 +15,7 @@ if($conn->connect_error){
 }
 echo "Connection Successfully" . '<br />';
 
-$now_user_id = $_COOKIE["id"];
-$now_user_account = $_COOKIE["account"];
-
-$sql="SELECT * FROM `users` WHERE `id` = '$now_user_id' ";
+$sql = "SELECT * FROM users WHERE `id` = '$now_id'";
 
 $result = $conn->query($sql);
 
@@ -34,7 +33,13 @@ if ($result->num_rows > 0) {
         echo 'Comment: ' . $row['comment'] . '<br /><br />';
         
     }
-
 }
-
 ?>
+<html>
+    <head>
+    </head>
+    <body>
+    <a href="user_edit.php">會員資訊修改</a>
+        
+    </body>
+</html>

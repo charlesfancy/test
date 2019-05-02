@@ -11,6 +11,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+
+
 $account=$_POST["account"];
 $password=$_POST["password"];
 $name=$_POST["name"];
@@ -22,8 +24,23 @@ $phone=$_POST["phone"];
 $email=$_POST["email"];
 $comment=$_POST["comment"];
 
+
+$con = mysqli_connect("mysql", "root", "root","test");
+// $sql1="SELECT * FROM user Where account='$account'";
+$sql="SELECT * FROM `users` WHERE `account` = '$account' LIMIT 0,1000;";
+
+$result = $conn->query($sql);
+if($result->num_rows != 0){
+    echo "此帳號已被註冊！";
+
+
+}else{
+    echo "註冊ing...";
+
 $sql = "INSERT INTO users (account, password, name, sex, year, month, day, phone, email, comment)
 VALUES ('$account', '$password', '$name', '$sex', '$year', '$month', '$day', '$phone', '$email', '$comment')";
+// $result = $conn->query($sql);
+
 
 if ($conn->query($sql) === TRUE) {
     echo "Hi~ " . $name . "你已成功註冊!!! <br/>";
@@ -34,6 +51,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
+}
 ?>
 
 <html>

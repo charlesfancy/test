@@ -26,10 +26,22 @@ $sql = "INSERT INTO users (account, password, name, sex, year, month, day, phone
 VALUES ('$account', '$password', '$name', '$sex', '$year', '$month', '$day', '$phone', '$email', '$comment')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo "Hi~ " . $name . "你已成功註冊!!! <br/>";
+    echo "帳號: " . $account . "<br>";
+    echo "密碼: " . $password . "<br>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
 ?>
+
+<html>
+    <head>
+    </head>
+    <body>
+    <a href="index.php">首頁</a>
+    <a href="user_list.php">會員清單</a>
+    <a href="user_edit.php">會員修改</a>
+    </body>
+</html>

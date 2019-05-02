@@ -27,8 +27,9 @@ $conn = new mysqli($servername, $username, $password, $db);
 // Check connection
 if($conn->connect_error){
     die("Connection Failed: " . $conn->connect_error);
+}else{
+echo "DB Connection Successfully" . '<br />';
 }
-echo "Connection Successfully" . '<br />';
 ?>
 
 <form action="checkpwd.php" method="post" name="myForm">

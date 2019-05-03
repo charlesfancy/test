@@ -40,6 +40,7 @@ if ($result->num_rows > 0) {
     </head>
     <body>
     <a href="user_edit.php">會員資訊修改</a>
+    <a href="user_delete.php">會員資訊刪除</a>
         
     </body>
 </html>

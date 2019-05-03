@@ -15,21 +15,29 @@ if ($conn->connect_error) {
 } 
 
 
-$account=$_COOKIE["account"];
-$now_name = $_COOKIE["name"];
-$name=$_POST["name"];
-$sex=$_POST["sex"];
-$year=$_POST["year"];
-$month=$_POST["month"];
-$day=$_POST["day"];
-$phone=$_POST["phone"];
-$email=$_POST["email"];
+$passed = $_COOKIE["passed"];
+
+if($passed != TRUE)
+{
+    header("location:index.php");
+    exit();
+}else{
+    $id = $_COOKIE["id"];
+    
+    $con = mysqli_connect("mysql", "root", "root","test");
+    $sql = "DELETE FROM users WHERE id='$id'"; 
+    if ($conn->query($sql) === TRUE) {
+        echo "你已成功刪除!!! <br/>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        $conn->close();
+    }
+}
 
 
 
-$con = mysqli_connect("mysql", "root", "root","test");
-// $sql1="SELECT * FROM user Where account='$account'";
- $sql = "UPDATE `users` SET  `name` = '$name',`year` = '$year',`month` = '$month',`day` = '$day',`phone` = '$phone',`email` = '$email' WHERE `id` = '$now_id'";
+
+// $sql = "UPDATE `users` SET  `name` = '$name',`year` = '$year',`month` = '$month',`day` = '$day',`phone` = '$phone',`email` = '$email' WHERE `id` = '$now_id'";
 // $sql = "UPDATE `users` SET `name` = 'BBB',`password` = 'BBB' WHERE `id` = '$now_id'";
 
 
@@ -38,13 +46,9 @@ $con = mysqli_connect("mysql", "root", "root","test");
 // $result = $conn->query($sql);
 
 
-if ($conn->query($sql) === TRUE) {
-    echo "HI~ " . $name . "你已成功修改!!! <br/>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
 
-$conn->close();
+
+
 ?>
 
 <html>

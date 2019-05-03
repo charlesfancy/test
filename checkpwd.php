@@ -41,9 +41,12 @@ if ($result->num_rows > 0) {
         setcookie("id",$row["id"],time()+3600);
         setcookie("account",$row["account"],time()+3600);
         setcookie("passed","TURE",time()+3600);
+        setcookie("name",$row["name"],time()+3600);
     
         $now_id = $_COOKIE["id"];
-
+        $now_account = $_COOKIE["account"];
+        // echo "$now_id";
+        // echo "$account";
        
     }}else{
         echo "帳號密碼錯誤，請查明後在登入!";

@@ -19,6 +19,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        echo 'ID: ' . $row['id'] . '<br />';
         echo 'Account: ' . $row['account'] . '<br />';
         echo 'password: ' . $row['password'] . '<br />';
         echo 'Name: ' . $row['name'] . '<br />';

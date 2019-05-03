@@ -60,6 +60,8 @@ $conn->close();
     <body>
     <a href="index.php">首頁</a>
     <a href="user_list.php">會員清單</a>
+    <a href="user_main2.php">會員資訊</a>
     <a href="user_edit.php">會員修改</a>
+    <a href="user_delete.php">會員資訊刪除</a>
     </body>
 </html>

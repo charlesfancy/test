@@ -39,7 +39,8 @@ if ($result->num_rows > 0) {
         $day = $row['day'];
         $phone = $row['phone'];
         $email = $row['email'];
-
+        $now_account = $_COOKIE["account"];
+        echo "$now_account";
 
     }
 }
@@ -58,18 +59,6 @@ if ($result->num_rows > 0) {
                 <td colspan="2" bgcolor="" align="cenet"
                 <font color="#FFFFFF"> 請填下列資料 （標示＊欄位請務必填寫）</font>
                 </td>
-            </tr>
-            <tr bgcolor="">
-                <td align="right">＊使用者帳號：</td>
-                <td><?php echo htmlspecialchars($account);?></td>
-            </tr>
-            <tr bgcolor="">
-                <td align="right">＊使用者密碼：</td>
-                <td><input name="password" type="password" size="15">(請使用英文或數字)</td>
-            </tr>
-            <tr bgcolor="">
-                <td align="right">＊密碼確認：</td>
-                <td><input name="re_password" type="password" size="15"/>(請使用英文或數字)</td>
             </tr>
             <tr bgcolor="">
                 <td align="right">＊姓名：</td>
@@ -98,11 +87,6 @@ if ($result->num_rows > 0) {
                 <td align="right">Email：</td>
                 <td><input name="email" type="text" size="40" value="<?php echo htmlspecialchars($email);?>" /></td>
             </tr>
-            <tr bgcolor="">
-                <td align="right">備註：</td>
-                <td><textarea name="comment" cols="45" rows="4"></textarea></td>
-            </tr>
-            <tr>
             <td align="center" colspan="2">
                 <input type="submit" value="送出" name="Submit">    
                 <input type="reset"value="重填">

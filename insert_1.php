@@ -38,7 +38,7 @@
             </tr>
             <tr bgcolor="">
                 <td align="right">＊生日：</td>
-                <td>西元
+                <td>民國
                 <input name="year" type="TEXT"size="4">年
                 <input name="month" type="TEXT"size="2">月
                 <input name="day" type="TEXT"size="2">日

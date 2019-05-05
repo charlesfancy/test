@@ -1,19 +1,8 @@
 <?php
-ini_set('display_errors', 1);
-$servername = "mysql";
-$username = "root";
-$password = "root";
-$db = 'test';
+    include('mysql_connect.php');
 
 $now_id = $_COOKIE["id"];
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-// Check connection
-if($conn->connect_error){
-    die("Connection Failed: " . $conn->connect_error);
-}
-echo "Connection Successfully" . '<br />';
 
 $sql = "SELECT * FROM users WHERE `id` = '$now_id'";
 
@@ -62,7 +51,7 @@ if ($result->num_rows > 0) {
             </tr>
             <tr bgcolor="">
                 <td align="right">＊姓名：</td>
-                <td><input name="name" type="text" size="8" value="<?php echo htmlspecialchars($name);?>" /></td>
+                <td><input name="name" type="text" size="8" value="<?php echo $name; ?>" /></td>
             </tr>
             <tr bgcolor="">
                 <td align="right">＊性別：</td>
@@ -74,18 +63,18 @@ if ($result->num_rows > 0) {
             <tr bgcolor="">
                 <td align="right">＊生日：</td>
                 <td>民國
-                <input name="year" type="TEXT"size="6" value="<?php echo htmlspecialchars($year);?>" />年
-                <input name="month" type="TEXT"size="4" value="<?php echo htmlspecialchars($month);?>" />月
-                <input name="day" type="TEXT"size="4" value="<?php echo htmlspecialchars($day);?>" />日
+                <input name="year" type="TEXT"size="6" value="<?php echo $year ?>" />年
+                <input name="month" type="TEXT"size="4" value="<?php echo $month; ?>" />月
+                <input name="day" type="TEXT"size="4" value="<?php echo $day; ?>" />日
                 </td>
             </tr>
             <tr bgcolor="">
                 <td align="right">電話：</td>
-                <td><input name="phone" type="text" size="20" value="<?php echo htmlspecialchars($phone);?>" /></td>
+                <td><input name="phone" type="text" size="20" value="<?php echo $phone; ?>" /></td>
             </tr>
             <tr bgcolor="">
                 <td align="right">Email：</td>
-                <td><input name="email" type="text" size="40" value="<?php echo htmlspecialchars($email);?>" /></td>
+                <td><input name="email" type="text" size="40" value="<?php echo $email; ?>" /></td>
             </tr>
             <td align="center" colspan="2">
                 <input type="submit" value="送出" name="Submit">    

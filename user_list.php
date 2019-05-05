@@ -1,17 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-$servername = "mysql";
-$username = "root";
-$password = "root";
-$db = 'test';
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-// Check connection
-if($conn->connect_error){
-    die("Connection Failed: " . $conn->connect_error);
-}
-echo "Connection Successfully" . '<br />';
+    include('mysql_connect.php');
 
 $sql = "SELECT * FROM users";
 

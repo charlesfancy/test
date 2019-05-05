@@ -1,10 +1,5 @@
 <?php
-
-ini_set('display_errors', 1);
-$servername = "mysql";
-$username = "root";
-$password = "root";
-$dbname = "test";
+    include('mysql_connect.php');
 
 // function execute_sql($database,$sql,$conn)
 // {
@@ -14,41 +9,34 @@ $dbname = "test";
 //     return $result;
 // }
 
-// 取得表單資料
-$account = $_POST["account"];
-$password1 = $_POST["password"];
+    // 取得表單資料
+    $account = $_POST["account"];
+    $password1 = $_POST["password"];
+    $sql = "SELECT * FROM `users` WHERE `account` = '$account' AND `password` = '$password1' LIMIT 0,1000";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if($conn->connect_error){
-    die("Connection Failed: " . $conn->connect_error);
-}else{
-echo "DB Connection Successfully" . '<br />';
-}
-$sql="SELECT * FROM `users` WHERE `account` = '$account' AND `password` = '$password1' LIMIT 0,1000";
+    // $sql="SELECT * FORM users Where 'account' ='$account' AND 'password' = '$password1'";
+    $result = $conn->query($sql);
+    // $result = execute_sql("test",$sql,$conn);
+    echo "帳號: " . $account . "密碼: " . $password1 . "<br>";
 
-// $sql="SELECT * FORM users Where 'account' ='$account' AND 'password' = '$password1'";
-$result = $conn->query($sql);
-// $result = execute_sql("test",$sql,$conn);
-echo "帳號: " . $account . "密碼: " . $password1 . "<br>";
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "登入成功!!<br>";
+            echo "id: " . $row["id"] . " - Name: " . $row["name"] . " - Phone: " . $row["phone"] . "<br>";
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "登入成功!!<br>";
-        echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Phone: " . $row["phone"]. "<br>";
+            setcookie("id", $row["id"], time() + 3600);
+            setcookie("account", $row["account"], time() + 3600);
+            setcookie("passed", "TURE", time() + 3600);
+            setcookie("name", $row["name"], time() + 3600);
 
-        setcookie("id",$row["id"],time()+3600);
-        setcookie("account",$row["account"],time()+3600);
-        setcookie("passed","TURE",time()+3600);
-        setcookie("name",$row["name"],time()+3600);
-    
-        $now_id = $_COOKIE["id"];
-        $now_account = $_COOKIE["account"];
-        // echo "$now_id";
-        // echo "$account";
-       
-    }}else{
+            $now_id = $_COOKIE["id"];
+            $now_account = $_COOKIE["account"];
+            $now_name = $_COOKIE["name"];
+            // echo "$now_id";
+            // echo "$account";
+        }
+    } else {
         echo "帳號密碼錯誤，請查明後在登入!";
         header("refresh:5;url=http://test.test/index.php");
     }
@@ -66,15 +54,18 @@ if ($result->num_rows > 0) {
 //     mysql_close($conn);
 //     setcookie("id",$id);
 //     setcookie("passed","TURE");
-    
+
 // }
 // header("refresh:5;url=http://test.test/user_main.php");
 ?>
 <html>
-    <head>
-    </head>
-    <body>
+
+<head>
+</head>
+
+<body>
     <a href="user_main2.php">會員資訊</a>
-        
-    </body>
+
+</body>
+
 </html>

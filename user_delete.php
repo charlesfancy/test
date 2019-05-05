@@ -1,31 +1,19 @@
 <?php
-ini_set('display_errors', 1);
-$servername = "mysql";
-$username = "root";
-$password = "root";
-$dbname = "test";
+include('mysql_connect.php');
+
 
 $now_id = $_COOKIE["id"];
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
 
 
 $passed = $_COOKIE["passed"];
 
-if($passed != TRUE)
-{
+if ($passed != TRUE) {
     header("location:index.php");
     exit();
-}else{
+} else {
     $id = $_COOKIE["id"];
-    
-    $con = mysqli_connect("mysql", "root", "root","test");
-    $sql = "DELETE FROM users WHERE id='$id'"; 
+
+    $sql = "DELETE FROM users WHERE id='$id'";
     if ($conn->query($sql) === TRUE) {
         echo "你已成功刪除!!! <br/>";
     } else {
@@ -52,11 +40,14 @@ if($passed != TRUE)
 ?>
 
 <html>
-    <head>
-    </head>
-    <body>
+
+<head>
+</head>
+
+<body>
     <a href="index.php">首頁</a>
     <a href="user_list.php">會員清單</a>
     <a href="user_edit.php">會員修改</a>
-    </body>
+</body>
+
 </html>

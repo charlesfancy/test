@@ -1,6 +1,6 @@
 <?php
     include('mysql_connect.php');
-    echo 'AAA';
+    echo 'change';
 ?>
 
 <html>
